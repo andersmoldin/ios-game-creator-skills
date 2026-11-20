@@ -7,7 +7,7 @@ Read this before importing 3D assets, setting up Reality Composer Pro, or when a
 - Ship models as USDZ. Export from Blender, Maya or Houdini directly to USD; `.usda` is text (diffable), `.usdc` binary (heavy geometry), `.usdz` the zipped package that ships.
 - RealityKit uses meters, +Y up, and −Z forward. Blender is Z-up, so expect a −90° rotation about X on import; fix it at export rather than in code.
 - Normal maps must be OpenGL-style (DirectX-style maps have the green channel inverted).
-- Pack roughness, metallic and ambient occlusion into the R, G and B channels of one texture.
+- Pack roughness, metallic and ambient occlusion into the R, G and B channels of one texture. Scalar material slots read the red channel by default, so give each slot its channel with a swizzle: `var t = MaterialParameters.Texture(orm); t.swizzle = MTLTextureSwizzleChannels(red: .green, green: .green, blue: .green, alpha: .one); material.metallic = .init(texture: t)`.
 - About 2048 px per side is enough on iPhone and iPad. Texture memory is roughly width × height × 4 bytes × 4/3 with mipmaps, so one 2048² RGBA texture costs about 22 MB.
 - Converting an old SceneKit `.scn` file: Xcode File > Export as USD, or `xcrun scntool --convert in.scn --format usdz`. SceneKit particle files have no converter; rebuild them with `ParticleEmitterComponent`.
 - Load asynchronously (`try await Entity(named:in:)`), load before gameplay starts, and reuse `MeshResource` and material instances across entities.

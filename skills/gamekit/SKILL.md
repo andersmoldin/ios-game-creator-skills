@@ -73,12 +73,9 @@ func finishAttempt(score: Int) async {
 - Track a running activity with `GKGameActivity.start(definition:)`, `pause()`, `resume()`, `end()`. Scores and achievements set on the activity are submitted once at `end()`.
 
 ```swift
-extension GameCenter: GKLocalPlayerListener {
-    // Must be nonisolated: a @MainActor witness does not compile in Swift 6.
-    nonisolated func player(_ player: GKPlayer, wantsToPlay activity: GKGameActivity) async -> Bool {
-        let id = activity.activityDefinition.identifier
-        let partyCode = activity.partyCode
-        return await MainActor.run { route(activityID: id, partyCode: partyCode) }
+extension GameCenter: @MainActor GKLocalPlayerListener {   // isolated conformance (Swift 6.2+)
+    func player(_ player: GKPlayer, wantsToPlay activity: GKGameActivity) async -> Bool {
+        route(activityID: activity.activityDefinition.identifier, partyCode: activity.partyCode)
     }
     private func route(activityID: String, partyCode: String?) -> Bool { /* open the mode */ true }
 }
@@ -88,7 +85,7 @@ extension GameCenter: GKLocalPlayerListener {
 
 - `GKAccessPoint.shared` opens the system Game Overlay on iOS 26. Show it (`isActive = true`) on menus and settings only, never during play, splash screens or tutorials.
 - Pause the game while `isPresentingGameCenter` is true; keep HUD clear of `frameInScreenCoordinates`.
-- A custom "Leaderboards" button calls `GKAccessPoint.shared.trigger(leaderboardID:playerScope:timeScope:)`, `trigger(achievementID:)` or `trigger(state:)`.
+- A custom "Leaderboards" button calls `GKAccessPoint.shared.trigger(leaderboardID:playerScope:timeScope:handler:)`, `trigger(achievementID:handler:)` or `trigger(state:handler:)`.
 
 ## Multiplayer
 

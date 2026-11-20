@@ -13,7 +13,7 @@ import CoreHaptics
     init() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics,
               let engine = try? CHHapticEngine() else { return }      // iPad: no haptics
-        engine.playsHapticsOnly = true
+        engine.playsHapticsOnly = true                              // false if patterns contain audio events
         engine.isAutoShutdownEnabled = true                           // stops when idle, restarts on demand
         engine.stoppedHandler = { reason in print("Haptics stopped: \(reason.rawValue)") }
         engine.resetHandler = { [weak engine] in try? engine?.start() }   // then recreate players
@@ -36,6 +36,7 @@ import CoreHaptics
 }
 ```
 
+- `playsHapticsOnly = true` lowers latency but makes the engine ignore audio events. For patterns that carry their own sound, create the engine with `CHHapticEngine(audioSession: .sharedInstance())` and leave `playsHapticsOnly` false.
 - Create the engine at launch and keep a strong reference. Set `stoppedHandler` and `resetHandler` before `start()`.
 - `stoppedHandler` fires when the system stops the engine (backgrounding, audio interruption, errors). `resetHandler` fires after the haptic server restarts: start the engine again and recreate every player.
 - Starting a stopped engine on first play adds noticeable latency; start it before gameplay.

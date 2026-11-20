@@ -45,7 +45,7 @@ Scale modes: `.aspectFit` letterboxes, `.aspectFill` crops, `.resizeFill` tracks
 ## Swift 6 concurrency
 
 - `SKNode` (and so `SKScene`) is `@MainActor`, inherited from `UIResponder`. Closures created in a scene (`SKAction.run`, `customAction`) inherit the main actor.
-- `SKPhysicsContactDelegate` is nonisolated, so `class GameScene: SKScene, SKPhysicsContactDelegate` fails to compile in Swift 6. Write an isolated conformance: `SKScene, @MainActor SKPhysicsContactDelegate`.
+- `SKPhysicsContactDelegate` is nonisolated, so without default main-actor isolation `class GameScene: SKScene, SKPhysicsContactDelegate` fails to compile in Swift 6. Write an isolated conformance, which compiles under every setting: `SKScene, @MainActor SKPhysicsContactDelegate`.
 - Preload with the async forms (`await atlas.preload()`, `await SKTexture.preload(textures)`); the completion-handler forms are `@Sendable` and warn when they touch nodes.
 - `await node.run(action)` resumes when the action ends, which suits short sequences. It never resumes for `repeatForever`.
 - New Xcode projects default to Swift 5 language mode; set `SWIFT_VERSION = 6` explicitly.

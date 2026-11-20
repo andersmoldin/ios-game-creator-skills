@@ -11,7 +11,7 @@ Content is everything the game does not need in order to function but that gives
 ## Steps
 
 1. List the content types the game needs in the **Content** section of `GAME_DESIGN.md`, and for each type the mechanic it exercises and what makes two pieces of it feel different.
-2. Author content as data, not code: one file per type (for example `Content/enemies.json`, `Content/puzzles.json`), each entry with an `id`, the mechanic it uses, a difficulty value and its tuning values. Code defines behaviors; data picks and combines them.
+2. Author content as data, not code: one file per type (for example `Content/enemies.json`, `Content/puzzles.json`), each entry with an `id`, the mechanic it uses, a difficulty value and its own stats. Global constants stay in `Tuning.json`. Code defines behaviors; data picks and combines them.
 3. Write a validator that loads every content file at test time and checks it: IDs unique, references resolve, values inside the ranges in `Tuning.json`, every puzzle solvable (run a solver), every level reachable. Done when the validator runs in the test suite and fails on a broken entry.
 4. Order content into a curve: introduce, develop, twist, test. Each new piece teaches, combines or twists something; cut pieces that do none of these.
 

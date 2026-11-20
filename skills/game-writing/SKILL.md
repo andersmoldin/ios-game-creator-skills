@@ -12,8 +12,8 @@ Game writing covers the dialogue, text and story of a game, and also how they re
 
 1. Write the **Writing** section of `GAME_DESIGN.md`: the story in five sentences (start, turn, climax, end, what it means), the narrator's voice with one sample line, and the chosen structure (below).
 2. Check the story against the mechanics: list what the systems reward the player for doing, and confirm the story does not argue against it. If the story praises mercy while the systems reward greed, change one of them.
-3. Author all narrative text outside Swift, in structured data files (`Story/*.json`) read by a small Swift interpreter. For large branching stories, inkle's ink language compiles to JSON, and its JavaScript runtime (inkjs) runs on iOS inside JavaScriptCore. Track story state in named variables (`metTheKeeper`, `trust`), not in code paths.
-4. Put every player-facing string in a String Catalog (`Localizable.xcstrings`) from the first line. Never bake text into images.
+3. Author the story's structure outside Swift, in data files (`Story/*.json`) read by a small Swift interpreter; each line in them is a string key (step 4). For large branching stories, inkle's ink language compiles to JSON, and its JavaScript runtime (inkjs) runs on iOS inside JavaScriptCore. Track story state in named variables (`metTheKeeper`, `trust`), not in code paths.
+4. Keep the text itself in a String Catalog (`Localizable.xcstrings`) from the first line; story data holds only string keys (`"line": "keeper.greeting"`). Xcode extracts keys only from code, so add data-driven keys to the catalog by hand and look them up with `Bundle.main.localizedString(forKey:value:table:)`. Never bake text into images.
 5. Read every line on a real phone at the game's text size. Done when every line fits its box at the largest supported text size and does one job.
 
 ## Structure: choose on purpose

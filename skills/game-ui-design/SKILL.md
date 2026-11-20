@@ -19,7 +19,7 @@ Game UI is how the player interacts with the game and how the game answers: menu
 2. Lay out the HUD in groups anchored to screen edges and corners, each at a fixed size and offset, inside the safe area. Never scale one 16:9 layout uniformly.
 3. Lay out touch controls (rules below) and implement them with the `game-controller` skill.
 4. Build menus, pause and settings.
-5. Check every screen at 4:3 (iPad), 16:10 and 19.5:9 (iPhone), in each supported orientation, at the largest text size, with VoiceOver on and with Reduce Motion on. Done when nothing is clipped, overlapping, unreadable or unreachable in any of these.
+5. Check every screen at 4:3 and about 1.43:1 (iPads), 16:9 (iPhone SE) and 19.5:9 (current iPhones), in each supported orientation, at the largest text size, with VoiceOver on and with Reduce Motion on. Done when nothing is clipped, overlapping, unreadable or unreachable in any of these.
 
 ## Sizes and layout
 

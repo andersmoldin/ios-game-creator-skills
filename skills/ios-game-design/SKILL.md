@@ -29,7 +29,7 @@ This router names the skill for each part of building an iOS game and holds the 
 
 ## The design doc
 
-Every game keeps one design doc, `GAME_DESIGN.md`, at the root of the game's repository. Each discipline skill owns one section of it (World, Systems, Content, Writing, Levels, UI, Audio, Feel, Art direction). Read the doc before changing the game, and update the owning section when a decision changes. Tuning numbers live in data files that the doc points to, not in the doc itself.
+Every game keeps one design doc, `GAME_DESIGN.md`, at the root of the game's repository. Each discipline skill owns one section of it (World, Systems, Content, Writing, Levels, UI, Audio, Feel, Art direction). Read the doc before changing the game, and update the owning section when a decision changes. Tuning numbers live only in data files: global values in `Tuning.json`, per-entry values in content files. The doc names the keys it relies on and never repeats their values.
 
 ## Building a new game
 
@@ -45,7 +45,7 @@ Keep the game original: borrow genre conventions and mechanics, never another ga
 
 ## Project baseline
 
-- **Toolchain:** deployment target iOS 26. App Store uploads must be built with Xcode 26 or later and the iOS 26 SDK; current Xcode is 27. Gate iOS 27 APIs with `if #available(iOS 27, *)` and provide a fallback. Swift 6 language mode (`SWIFT_VERSION = 6`; templates still default to 5).
+- **Toolchain:** deployment target iOS 26. App Store uploads must be built with Xcode 26 or later and the iOS 26 SDK; current Xcode is 27. Gate iOS 27 APIs with `if #available(iOS 27, *)` and provide a fallback. Swift 6 language mode (`SWIFT_VERSION = 6`; templates still default to 5). Xcode 27 app templates also set `SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor` and `SWIFT_APPROACHABLE_CONCURRENCY = YES`; keep both, and write code that also compiles without them, as the skills' samples do.
 - **App shell:** SwiftUI `App` with the game view (`SpriteView` or `RealityView`) full-bleed via `.ignoresSafeArea()`, HUD and menus as SwiftUI overlays or engine nodes.
 - **Renderer:** SpriteKit for 2D, RealityKit for 3D. SceneKit is deprecated since iOS 26; do not start new work on it. These skills cover Apple's native frameworks only, not third-party engines.
 - **Metal:** only when the renderer cannot express an effect. Prefer custom shaders inside SpriteKit or RealityKit first. Metal 4 needs an A14 or newer, while iOS 26 still runs on A13 devices, so keep a Metal 3 path.

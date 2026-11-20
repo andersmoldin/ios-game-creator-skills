@@ -13,7 +13,7 @@ System design creates the rules of the game and the mathematical patterns beneat
 1. Name the target experience first (for example tension, mastery, discovery or expression), then the player behavior that would produce it, then the mechanics that create that behavior. Write all three in the **Systems** section of `GAME_DESIGN.md`.
 2. Write the core loop as one line: what the player does every few seconds, what that earns, and what the earnings unlock. Done when every mechanic in the game appears in the loop or in a loop that feeds it.
 3. Map resources as sources, stores, converters and sinks. Mark each feedback loop as reinforcing (snowballs, needs a brake or cap) or balancing (stabilizes).
-4. Put every tuning number in one data file, for example `Tuning.json` decoded into a `Tuning` struct at launch: speeds, costs, rewards, timers, spawn rates, difficulty steps. Game code reads from it; Swift files contain no gameplay constants.
+4. Put every global tuning number in one data file, `Tuning.json`, decoded into a `Tuning` struct at launch: speeds, costs, rewards, timers, spawn rates, difficulty steps. Values that belong to one enemy, item or puzzle live in that entry's content file (`game-content-design`). Game code reads from these files; Swift files contain no gameplay constants.
 5. Write a headless simulation (a unit-test target or command-line tool that runs the rules without rendering) that plays thousands of sessions with simple bot strategies. Check the outputs against the targets in the doc: time to first reward, session length, win rate per difficulty step, economy inflation. Done when every target has a measured number next to it.
 
 ## Principles

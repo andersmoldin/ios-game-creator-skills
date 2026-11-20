@@ -12,7 +12,7 @@ Audio design creates or selects every sound in the game: music, sound effects an
 
 1. Write the **Audio** section of `GAME_DESIGN.md`: the musical style in one line with two reference moods (not specific tracks to copy), whether the player's own music should keep playing (default yes, see below), and the mix buses (music, effects, interface, voice).
 2. Make a sound list: one row per player action and game event, with its weight (light, medium, heavy), whether it exists in the game world (diegetic) or belongs to the interface or score, and the visual and haptic that accompany it. Done when every input the player can make and every state change they must notice has a row.
-3. Source or create each sound (below) and record its source and license in a credits file.
+3. Source or create each sound (below) and record its source, author and license in `CREDITS.md`.
 4. Plan the music: which tracks play where, and how they react to play (adaptive music, below).
 5. Listen on the iPhone speaker, on earbuds and muted. Done when the game is fully playable muted and nothing is harsh or buried on the speaker.
 
@@ -36,7 +36,7 @@ Audio design creates or selects every sound in the game: music, sound effects an
 ## Sourcing
 
 - Retro and synthesized effects can be generated with sfxr-style tools (jsfxr) and edited.
-- Use CC0 sounds freely; CC-BY requires credits; non-commercial licenses (CC-BY-NC) cannot be used in a game sold or monetized on the App Store.
+- Licenses follow the same rules as art (`game-art-direction`): CC0 freely, CC-BY with credit in the game, CC-BY-SA and GPL only with the author's written permission, non-commercial licenses never on the App Store.
 - Never copy recognizable music or sounds from other games.
 - Loudness target for handheld play: about −18 LUFS integrated, so the game is neither quieter nor louder than other apps.
 

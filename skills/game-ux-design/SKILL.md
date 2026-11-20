@@ -13,7 +13,7 @@ User experience design combines all the other disciplines into how playing the g
 1. Build a test room: one flat level with a few gaps, walls, slopes and targets, reachable from a debug menu.
 2. Tune movement and actions there using the rules below. Done when moving and acting feel good with grey boxes and no sound.
 3. Add forgiveness (below) and verify each window by playing deliberately late and early inputs.
-4. Write the **Feel** section of `GAME_DESIGN.md`: the target feel in three words, the chosen movement values, and every forgiveness window in seconds. Mirror the values in `Tuning.json`.
+4. Store the movement values and every forgiveness window (in seconds) in `Tuning.json`. Write the **Feel** section of `GAME_DESIGN.md`: the target feel in three words and the `Tuning.json` keys that produce it.
 5. Design the first five minutes and the accessibility options (below). Done when a first-time player reaches the core loop without reading text.
 
 ## Responsiveness

@@ -15,7 +15,7 @@ Read this before adding any image, sprite, model, texture, font or environment m
 
 ## Generating 2D assets in code
 
-- **Vector art as SVG:** write SVG files by hand (simple shapes, palette colors, consistent stroke width), add them to the asset catalog and check "Preserve Vector Data" so they scale crisply. SpriteKit then loads them by name.
+- **Vector art as SVG:** write SVG files by hand (simple shapes, palette colors, consistent stroke width) and add them to the asset catalog; SpriteKit loads them by name. A sprite texture is a bitmap made once, so set each SVG's canvas to the largest size it appears on screen (in points); the catalog rasterizes it for @2x and @3x. Never scale a sprite above that size.
 - **Rendered textures:** draw shapes, gradients and noise with `UIGraphicsImageRenderer` or SwiftUI `ImageRenderer` at load time, then wrap the image in `SKTexture(image:)`. Render once and reuse; never per frame.
 - **Pixel art:** describe each sprite as a small grid of palette indices in data and rasterize it to a texture; draw at an integer scale with `.nearest` filtering.
 - **Shader backgrounds:** animated gradients, stars or water as a fragment shader on one full-screen sprite (`spritekit` references) or as a Shader Graph material.

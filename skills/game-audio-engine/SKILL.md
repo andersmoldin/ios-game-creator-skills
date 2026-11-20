@@ -103,7 +103,7 @@ Read [references/engine-code.md](references/engine-code.md) for a verified sound
 
 ## Haptics synced to sound
 
-For a haptic that must land with a sound, put the sound inside the Core Haptics pattern (`registerAudioResource(_:options:)` plus an `.audioCustom` event), so both share one clock. See the `game-controller` skill for the haptics engine.
+For a haptic that must land with a sound, put the sound inside the Core Haptics pattern (`registerAudioResource(_:options:)` plus an `.audioCustom` event), so both share one clock. Such an engine is created with `CHHapticEngine(audioSession: .sharedInstance())` and must keep `playsHapticsOnly` false, or it drops the audio events. See the `game-controller` skill for the haptics engine.
 
 ## Gotchas
 
