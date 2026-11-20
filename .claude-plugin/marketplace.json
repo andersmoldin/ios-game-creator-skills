@@ -1,0 +1,13 @@
+{
+  "name": "ios-game-creator-skills",
+  "description": "Marketplace for the ios-game-creator plugin: skills for designing and building iOS games.",
+  "owner": { "name": "Anders Moldin", "url": "https://github.com/andersmoldin" },
+  "plugins": [
+    {
+      "name": "ios-game-creator",
+      "source": "./",
+      "description": "Agent skills for designing and building iOS games: a router, nine game design discipline skills and five Apple technology skills (SpriteKit, RealityKit, GameKit, Game Controller, game audio) for iOS 26 and later.",
+      "category": "development"
+    }
+  ]
+}
