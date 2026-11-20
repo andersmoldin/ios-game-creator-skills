@@ -1,0 +1,9 @@
+{
+  "name": "ios-game-creator",
+  "description": "Agent skills for designing and building iOS games: a router, nine game design discipline skills and five Apple technology skills (SpriteKit, RealityKit, GameKit, Game Controller, game audio) for iOS 26 and later.",
+  "author": { "name": "Anders Moldin", "url": "https://github.com/andersmoldin" },
+  "homepage": "https://github.com/andersmoldin/ios-game-creator-skills",
+  "repository": "https://github.com/andersmoldin/ios-game-creator-skills",
+  "license": "MIT",
+  "keywords": ["ios", "game-design", "spritekit", "realitykit", "gamekit", "game-controller", "swift", "skills"]
+}
