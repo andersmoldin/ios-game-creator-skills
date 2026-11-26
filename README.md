@@ -1,3 +1,5 @@
+> **Moved.** These skills now live in [andersmoldin/skills](https://github.com/andersmoldin/skills/tree/main/ios-game) as part of the `moldin-skills` plugin, renamed with the prefix `ios-game-` (for example `moldin-skills:ios-game-spritekit`). This repository is archived.
+
 # ios-game-creator-skills
 
 Agent skills for designing and building iOS games, distilled from game design disciplines and Apple developer sources.
